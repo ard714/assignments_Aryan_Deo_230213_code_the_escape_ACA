@@ -1,0 +1,25 @@
+#include <iostream>
+#include <vector>
+#include <set>
+#include <string>
+using namespace std;
+
+int main() {
+	int num;
+	cin >> num;    // Reading input from STDIN
+	cout << "Input number is " << num << endl;	// Writing output to STDOUT
+
+	vector<string> arr(num);
+	for (int i = 0; i < num; i++) {
+		cin >> arr[i];    // Reading strings
+	}
+
+	set<string> seen;  // Stores previously seen strings in sorted order
+
+	for (int i = 0; i < num; i++) {
+		int niceness = distance(seen.begin(), seen.lower_bound(arr[i]));
+		cout << niceness << endl;  // Output niceness value
+		seen.insert(arr[i]);       // Insert current string
+	}
+}
+
