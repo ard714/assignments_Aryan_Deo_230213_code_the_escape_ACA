@@ -1,0 +1,29 @@
+long long findsum(vector<int> A, int B){
+    long long sum = 0;
+    for(int i=0; i<A.size(); i++){
+        if(A[i]>B){
+            sum += A[i] - B;
+        }
+    }
+    return sum;
+}
+
+int Solution::solve(vector<int> &A, int B) {
+    int h = *max_element(A.begin(), A.end());
+    int l = 0;
+    int mid;
+    while(l<h){
+        mid = (l + h)/2;
+        long long sum = findsum(A, mid);
+        if(sum == B || l == mid){
+            return mid;
+        }
+        else if(sum>B){
+            l = mid;
+        }
+        else{
+            h = mid;
+        }
+    }
+    return mid;
+}
