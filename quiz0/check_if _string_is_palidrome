@@ -1,0 +1,30 @@
+#include <bits/stdc++.h> 
+ 
+vector<char> realstr(string s){
+    vector<char> sa;
+    for(int i=0;i<s.length();i++){
+        if(s[i]>=65 && s[i]<=90){
+            sa.push_back(char(32+int(s[i])));
+        }
+        else if(s[i]>=97 && s[i]<=122){
+            sa.push_back(s[i]);
+        }
+        else if(s[i]>=48 && s[i]<=57){
+            sa.push_back(s[i]);
+        }
+    }
+    return sa;
+}
+bool checkPalindrome(string s)
+{
+    vector<char> sa=realstr(s);
+    int st=0;
+    int e=sa.size()-1;
+    while(st<e){
+        if(sa[st++]!=sa[e--]){
+            return false;
+        }
+    }
+    return true;
+}
+
