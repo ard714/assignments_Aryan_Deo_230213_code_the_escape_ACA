@@ -1,0 +1,15 @@
+string removeDuplicates(string str, int n)
+{
+    bool visited[26] = {false};  
+    string result;
+
+    for (char ch : str) {
+        int idx = ch - 'a';
+        if (!visited[idx]) {
+            visited[idx] = true;
+            result += ch;
+        }
+    }
+
+    return result;
+}
